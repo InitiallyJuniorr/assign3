@@ -37,6 +37,13 @@ export default function Board() {
       else if(adjacency(selectedSquare).includes(i) && nonNull === 6) {
         nextSquares[i] = currentPlayer;
         nextSquares[selectedSquare] = null;
+        
+        // Center Square Handling
+        const CenterOccupied = squares[4] !== currentPlayer;
+        const CenterChosen = selectedSquare === 4;
+        const WinningMove = (calculateWinner(nextSquares)) === currentPlayer;
+        if(!WinningMove && !CenterChosen && !CenterOccupied) { return; }
+
         setSelectedSquare(null);
         setSquares(nextSquares);
         setXIsNext(!xIsNext);
@@ -46,7 +53,6 @@ export default function Board() {
       else { return; }
     }
     else if(squares[i] && nonNull === 6 && CorrectTurn) {
-      console.log("out");
       setSelectedSquare(i);
       return
     } 

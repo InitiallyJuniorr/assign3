@@ -1,0 +1,25 @@
+Opening the document, it initially starts with a Hello CS35L\
+
+After the first change, there is just a white box in the top left corner
+This is merely the import default function square, with the button JSX element and an X in the middle (to add an X)
+
+To create a second button (exactly the same and to the right of it), i duplicated the code below with <> and </> above and below respectively, making sure I used parenthesis to encapsulate the return.
+
+To make them in a 3x3 row i created a div per row with classname board-row and used the premade css styling 
+
+I create a function square which returns the individual squares, and returned that nine times in the rows, instead of the previous returned buttons (same thing, but with a function separating)
+Create the input for this function as {value} and then pass value=”insert number” to each function call
+
+useState lets things stay the way they’ve been changed to stay (import fom react)
+Then inside the function square, displaying the squares in the grid, you have a handleclick function (inside the square function) and you return what the square looks like
+The const [value, setvalue] = useState(null); allows you to permanently alter the value (keep at top). This is how we are able to (and by use of onclick) change the blank square to an X
+
+const [squares, setSquares] = useState(Array(9).fill(null))
+Is used in the export function to create an array, initialized at null, this will allow us to create game ending conditions based off the array
+
+onSquareClick={handleClick}
+Must be added to every <Square … > in order to allow each square to be clicked on
+
+You need to call .slice() on the array in handle click, which creates a copy of the array instead of modifying the existing array.
+
+Using a similar idea to the squares and set squares pair, you want an ‘xisnext, setxisnext’ to handle the turn taking component of the game	
