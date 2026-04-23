@@ -49,7 +49,6 @@ export default function Board() {
         setXIsNext(!xIsNext);
         return;
       }
-      else if(selectedSquare) { return; }
       else { return; }
     }
     else if(squares[i] && nonNull === 6 && CorrectTurn) {

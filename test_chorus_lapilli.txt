@@ -1,0 +1,31 @@
+Using the tic-tac-toe set-up makes this MUCH easier than without it, that being said, there are a few significant steps that must be taken.`
+
+I created a value nonNull which contains the amount of Xs and Os in our array, 
+this allows us to figure out when we should switch from placing to moving.
+
+I had to create a selectedSquare value for when we are in the moving phase, 
+because its value must be re-rendered until we no longer need it / alters the react component, not just code.
+For a square to be selected, the square must be NONEMPTY && NonNull === 6 && the piece matches up with whoevers turn it is
+
+Created a current value variable to simply track whether we will be placing/moving an X or O this turn
+
+I had to create adjacency values, this was a function, when given a number 0-8 would return all diag/adjacent values
+This allowed the determination of moving values, I could not think of any better implementation than 9 if statements
+
+I added an optional highlight mechanic (Gemini was used to generate the CSS code) 
+This was done by adding this line to the squares in the main board return
+isHighlighted={selectedSquare === *square number*}
+Then adding a ? style boolean to the class names, allowing CSS to do its thing when "selectedSquare" is that number
+
+I had a big if block which handled the control flow of the game
+- If game is won, return
+- if NonNull is 6, then place as usual, taking turns
+- if the selected piece is of the right turn (nonnull === 6), and is moved to an adjacent square, then move that to an adjacent square
+    - There is a block in the middle of this handling the case where there is a piece in the middle
+    - Note that you must view 'no simialr piece  in the center', 'center is selected', and 'gamewinning move' as flags which allow you to be able to move a piece
+    - Otherwise void the last attempt at a move, but make sure you allow an update to calculate calculateWinner(nextsquares)
+
+If a piece which is not adjacent is chosen, or belongs to the opponent is chosen, return
+
+
+
